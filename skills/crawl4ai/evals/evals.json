@@ -1,0 +1,44 @@
+{
+  "skill_name": "crawl4ai",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I need clean markdown from https://example.com/blog-post — can you scrape it and save the article content, ignoring the nav and footer?",
+      "expected_output": "A markdown file containing the article body from the page with navigation and footer boilerplate removed.",
+      "assertions": [
+        "The output is a .md file with the article's headings and paragraphs",
+        "The output excludes the site's navigation and footer content",
+        "The script uses AsyncWebCrawler with a PruningContentFilter or equivalent"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Extract all products from https://example.com/shop into a JSON array with name, price, and product URL. There are many product cards on the page.",
+      "expected_output": "A JSON array where each item has name, price, and url fields for every product card on the page.",
+      "assertions": [
+        "The output is valid JSON",
+        "Each item contains the fields name, price, and url",
+        "The extraction uses a JsonCssExtractionStrategy schema (no LLM)"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "The page https://example.com/dynamic loads its list via a 'Load More' button. Get me all 50 items without triggering rate limits.",
+      "expected_output": "All 50 items from the dynamic list, obtained by clicking the Load More button and waiting for content, with polite pacing.",
+      "assertions": [
+        "The script uses js_code and/or wait_for to click and await dynamic content",
+        "All 50 items are present in the result",
+        "The script includes a delay or cache_mode setting to avoid hammering the site"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Convert this HTML snippet to markdown: <html><body><h1>Title</h1><p>Body text</p></body></html>",
+      "expected_output": "A short markdown conversion showing # Title and Body text. (Negative control: agent can do this without the skill.)",
+      "assertions": [
+        "The output is plain markdown with the heading and body text",
+        "No AsyncWebCrawler, BrowserConfig, or extraction strategy is introduced for this trivial conversion"
+      ]
+    }
+  ]
+}

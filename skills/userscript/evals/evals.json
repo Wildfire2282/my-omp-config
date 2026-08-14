@@ -1,0 +1,47 @@
+{
+  "skill_name": "userscript",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Help me write a userscript for the Bilibili video page: add a 'one-click triple' button below the video that auto-likes + coins + favorites when clicked.",
+      "expected_output": "A userscript with a complete metadata block whose @match covers the Bilibili video page, a button injected below the video player, and every GM_* function used declared in @grant.",
+      "assertions": [
+        "The output contains a complete // ==UserScript== metadata block",
+        "@match precisely matches the target site domain (no http://*/* blanket match)",
+        "The button is injected with createElement + appendChild and handles SPA re-renders (MutationObserver or re-insertion with a marker class)",
+        "Every GM API used is declared in @grant"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I want to rewrite every recommendation-feed title on the Zhihu homepage to 'I am a title'. Write a Tampermonkey script that hijacks the feed API and modifies the returned data.",
+      "expected_output": "A userscript that intercepts the recommendation feed response and rewrites title fields in the data before the page renders them.",
+      "assertions": [
+        "The hijack script uses @run-at document-start",
+        "The script hijacks the API on unsafeWindow or the page window (fetch and/or XHR), not just sandbox window",
+        "A fetch hijack keeps a reference to the original fetch and calls it with call/apply; Response.json (or text) is re-wrapped",
+        "Response data is modified after JSON parsing and before resolving"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "The search box on this site is written in React. My script assigned a value to the input but the submit does nothing — how do I trigger its onChange?",
+      "expected_output": "An explanation and code that invoke the React onChange handler registered on the element (via __reactEventHandlers or the Fiber chain) instead of relying on synthetic input events.",
+      "assertions": [
+        "The answer uses __reactEventHandlers/__reactFiber (or equivalent React internals) to obtain and call onChange",
+        "It does not claim that assigning value + dispatching a synthetic Event alone works on React",
+        "It accounts for isTrusted being unfalsifiable for synthetic events if relevant"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Write a script to remove the ads on bbs.example.com pages and speed up the video player to 2x.",
+      "expected_output": "A userscript targeting bbs.example.com that removes ad elements and forces the video playback rate to 2.",
+      "assertions": [
+        "The script targets only bbs.example.com via @match",
+        "Ad removal handles dynamically injected elements (MutationObserver, not a one-time query at page load)",
+        "Every GM API used is declared in @grant"
+      ]
+    }
+  ]
+}

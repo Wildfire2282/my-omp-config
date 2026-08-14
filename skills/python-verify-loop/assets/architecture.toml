@@ -1,0 +1,11 @@
+# Architecture import rules for the verifier's arch layer.
+# Keys are the first path component under the package root (src/<pkg>/<key>/...).
+# A module may import from its own list plus itself; anything else under the
+# package is a violation (reverse dependencies fail). Unlisted modules are free.
+# Runs in full verification mode only.
+
+[rules]
+api = ["services"]
+services = ["repositories", "models"]
+repositories = ["models"]
+models = []

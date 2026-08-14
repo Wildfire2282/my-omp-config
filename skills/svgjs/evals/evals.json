@@ -1,0 +1,45 @@
+{
+  "skill_name": "svgjs",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Draw a circle with a gradient fill using SVG.js and animate it scaling up over 2 seconds.",
+      "expected_output": "SVG.js code that creates a canvas with SVG().addTo(), defines a gradient (SVG.Gradient), draws a circle referencing it, and animates the scale with animate(2000).",
+      "assertions": [
+        "The code creates a canvas via SVG().addTo(...) or a container constructor",
+        "The gradient is created with SVG.Gradient or draw.gradient() and applied via fill()",
+        "The animation uses animate(2000) or animate().duration(2000) with a scale transform"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Add a click handler to an SVG.js rect that changes its fill color when clicked.",
+      "expected_output": "SVG.js code using element.on('click', handler) where the handler changes fill() on the element.",
+      "assertions": [
+        "The code uses .on('click', ...) or the events sugar to bind the handler",
+        "The handler changes the element's fill, e.g. fill('#...') or fill({ color })",
+        "The handler references the element via this or the captured variable, not a raw DOM query"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Generate an SVG file in Node.js — no browser available. Show the setup.",
+      "expected_output": "Node.js code that registers a window via registerWindow(window, document) from svgdom BEFORE creating any SVG.js object, builds the drawing, and writes canvas.svg() to a file.",
+      "assertions": [
+        "The code calls registerWindow (or withWindow) before creating SVG.js objects",
+        "svgdom is imported and used to provide window/document",
+        "The drawing is exported with .svg() and written to a .svg file"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Write the raw SVG markup for a red square with a blue border.",
+      "expected_output": "Plain SVG XML markup (<svg><rect .../></svg>) using native attributes. (Negative control: hand-written SVG markup does not need the SVG.js skill.)",
+      "assertions": [
+        "The output is SVG markup, not JavaScript using SVG.js",
+        "No SVG() constructor, import, or @svgdotjs/svg.js reference is introduced",
+        "The markup contains a rect with red fill and blue stroke attributes"
+      ]
+    }
+  ]
+}

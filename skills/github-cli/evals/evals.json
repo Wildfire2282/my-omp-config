@@ -1,0 +1,53 @@
+{
+  "skill_name": "github-cli",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I finished my feature on branch feat/login and pushed it. Create a pull request against main with title 'Add login flow', then after CI passes merge it with squash and delete the branch.",
+      "expected_output": "Uses `gh pr create` with title/head/base flags, then `gh pr merge` with squash and delete-branch, all non-interactively.",
+      "assertions": [
+        "command includes `gh pr create`",
+        "command includes `--squash` and `--delete-branch` on merge",
+        "no bare `gh pr create` without title flags"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "List the 10 most recently updated open issues in cli/cli, showing just their numbers and titles as JSON.",
+      "expected_output": "A `gh issue list -R cli/cli` call with `--json number,title` and `--limit 10`, parsing JSON output instead of text.",
+      "assertions": [
+        "command includes `-R cli/cli` or `--repo cli/cli`",
+        "command includes `--json` with number and title",
+        "command includes `--limit 10`"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Use the GitHub API to find my login name via GraphQL.",
+      "expected_output": "A `gh api graphql` query for the viewer login, without hand-rolling curl with tokens.",
+      "assertions": [
+        "command starts with `gh api graphql`",
+        "query mentions viewer and login"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Run the deploy workflow in the current repo at ref v1.2.3 with input env=staging.",
+      "expected_output": "A `gh workflow run deploy.yml -r v1.2.3 -f env=staging` invocation.",
+      "assertions": [
+        "command includes `gh workflow run`",
+        "command includes `-f env=staging` or `--raw-field env=staging`",
+        "command includes `-r v1.2.3` or `--ref v1.2.3`"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Set the secret DEPLOY_KEY for the current repo's production environment, reading the value from the environment variable.",
+      "expected_output": "A `gh secret set DEPLOY_KEY --env production --body \"$DEPLOY_KEY\"` call that avoids echoing the secret on the command line in CI.",
+      "assertions": [
+        "command includes `gh secret set DEPLOY_KEY`",
+        "command includes `--env production`"
+      ]
+    }
+  ]
+}
