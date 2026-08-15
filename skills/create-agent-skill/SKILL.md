@@ -17,7 +17,14 @@ metadata:
 
 # Create Agent Skills
 
-Create a skill the user can drop into `~/.omp/agent/skills/<name>/` (or `<project>/.omp/skills/<name>/`) and use immediately: a directory with a valid `SKILL.md` — spec-compliant frontmatter plus instructions an agent can actually follow.
+Create a skill that installs into omp the current way — a symlink, not a copy. Skills live in the collection's `skills/` folder, and the whole folder is linked into omp (same pattern as `extensions` and `rules`):
+
+```bash
+ln -s ~/workspace/my-omp-config/skills ~/.omp/agent/skills      # user-wide
+ln -s ~/workspace/my-omp-config/skills <project>/.omp/skills    # per-project
+```
+
+**Create every new skill at its permanent home — `~/workspace/my-omp-config/skills/<name>/`** (the current user's `workspace/my-omp-config/skills` — always via `~`, never a hardcoded username). The link makes omp read every skill straight from source: a new skill is usable as soon as its directory exists in `skills/`, and later edits apply without re-installing. omp discovers skills as `<skills-root>/<name>/SKILL.md`; restart omp (or reload skills) to pick up a new link. Deliverable: a directory with a valid `SKILL.md` — spec-compliant frontmatter plus instructions an agent can actually follow.
 
 Follow the standard in `references/standard.md` exactly — naming, directory layout, frontmatter, license & attribution, README template, evals schema, `.gitignore` (§8 acceptance checklist).
 
@@ -37,6 +44,16 @@ Follow the standard in `references/standard.md` exactly — naming, directory la
 - Keep `SKILL.md` under 500 lines and ~5000 tokens — just what the agent needs on every run. Push detail into `references/` and tell the agent *when* to load each file ("Read `references/scripts.md` when writing a script for the skill" — not "see references for details").
 
 ## Workflow
+
+### 0. Create in the right place — the folder is the install
+
+The collection folder is the install point; there is no per-skill install step.
+
+1. Create the skill directory at its permanent home: `mkdir -p ~/workspace/my-omp-config/skills/<name>` (current user's `workspace/my-omp-config/skills` — use `~`, never a hardcoded username).
+2. Confirm the collection link is in place: `readlink ~/.omp/agent/skills` must resolve to `~/workspace/my-omp-config/skills` (user-wide), or `<project>/.omp/skills` for a per-project install.
+   - Link missing or pointing elsewhere → create it: `ln -s ~/workspace/my-omp-config/skills ~/.omp/agent/skills`. Never copy the skill into the skills root — the link exposes the whole folder.
+   - On this machine the link target is relative (`../../workspace/my-omp-config/skills` from `~/.omp/agent`) so it survives username changes — keep it relative; don't replace it with an absolute `/home/...` target.
+3. Once the skill's files exist, it is live through the link — restart omp (or reload skills) to register the new directory. Verify with `test -f ~/.omp/agent/skills/<name>/SKILL.md`.
 
 ### 1. Gather real expertise — never generate from scratch
 
@@ -76,6 +93,7 @@ metadata:
 - Check the body: does every instruction tell the agent something it wouldn't know otherwise? Cut anything that doesn't.
 - Check the language: all skill content — `SKILL.md`, frontmatter, `references/`, scripts, `assets/` — is written in English. Flag and rewrite any non-English content.
 - If `skills-ref` is available (`skills-ref validate ./<skill>`), run it; fix whatever it flags.
+- Check install: the collection link exposes the new skill — `test -f ~/.omp/agent/skills/<name>/SKILL.md` (or `<project>/.omp/skills/<name>/SKILL.md`) must succeed. If it fails, the skill is in the wrong folder or the link is broken — fix before delivering.
 
 ### 4. Optimize the description
 

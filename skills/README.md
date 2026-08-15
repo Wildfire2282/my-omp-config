@@ -1,4 +1,4 @@
-# my-skills
+# my-omp-config
 
 A collection of [Agent Skills](https://agentskills.io) for Oh My Pi (omp), the AI coding harness.
 
@@ -9,6 +9,6 @@ A collection of [Agent Skills](https://agentskills.io) for Oh My Pi (omp), the A
 - **svgjs/** — create, manipulate, and animate SVG with SVG.js v3
 - **userscript/** — write, debug, and enhance userscripts (Tampermonkey, ScriptCat, …)
 
-Each directory is a complete skill: a spec-compliant `SKILL.md` plus optional `references/` and `evals/`. Copy one into omp's skills directory — `~/.omp/agent/skills/` (user-wide) or `<project>/.omp/skills/` (per-project) — and it is ready to use.
+Each directory is a complete skill: a spec-compliant `SKILL.md` plus optional `references/` and `evals/`. Install the whole folder by symlinking it into omp's agent directory — `ln -s ~/workspace/my-omp-config/skills ~/.omp/agent/skills` (user-wide) or `<project>/.omp/skills` (per-project) — same pattern as `extensions` and `rules`, and the skills are ready to use.
 
 The skill standard — naming, structure, frontmatter, licensing, attribution, README, and evals — is defined inside the `create-agent-skill` skill: `create-agent-skill/references/standard.md`.

@@ -32,12 +32,11 @@ svgjs/
 Clone the repository and link the folder into omp's user skills directory:
 
 ```bash
-git clone https://github.com/Wildfire2282/my-skills.git
-mkdir -p ~/.omp/agent/skills
-ln -s "$(pwd)/my-skills/svgjs" ~/.omp/agent/skills/svgjs
+git clone https://github.com/Wildfire2282/my-omp-config.git ~/workspace/my-omp-config
+ln -s ~/workspace/my-omp-config/skills ~/.omp/agent/skills
 ```
 
-Or copy the folder into `~/.omp/agent/skills/` (user-wide) or `<project>/.omp/skills/` (per-project). omp discovers skills as `<skills-root>/<name>/SKILL.md`; restart omp (or reload skills) to pick them up.
+Per-project: link into `<project>/.omp/skills` instead. omp discovers skills as `<skills-root>/<name>/SKILL.md`; restart omp (or reload skills) to pick up new skills.
 
 ## Usage
 

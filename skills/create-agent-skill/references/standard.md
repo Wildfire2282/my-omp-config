@@ -154,15 +154,16 @@ An [Agent Skill](https://agentskills.io) for Oh My Pi (omp), the AI coding harne
 
 ## Installation
 
-Clone the repository and link the folder into omp's user skills directory:
+Clone the repository and link the `skills` folder into omp's agent directory (same pattern as `extensions` and `rules`):
 
 ```bash
-git clone https://github.com/Wildfire2282/my-skills.git
-mkdir -p ~/.omp/agent/skills
-ln -s "$(pwd)/my-skills/<name>" ~/.omp/agent/skills/<name>
+git clone https://github.com/Wildfire2282/my-omp-config.git ~/workspace/my-omp-config
+ln -s ~/workspace/my-omp-config/skills ~/.omp/agent/skills
 ```
 
-Or copy the folder into `~/.omp/agent/skills/` (user-wide) or `<project>/.omp/skills/` (per-project). omp discovers skills as `<skills-root>/<name>/SKILL.md`; restart omp (or reload skills) to pick them up.
+For a per-project install, link into `<project>/.omp/skills` instead. omp discovers skills as `<skills-root>/<name>/SKILL.md`; restart omp (or reload skills) to pick up new skills.
+
+Tip: keep the link target relative to the home directory (`../../workspace/my-omp-config/skills` from `~/.omp/agent`) so it survives username changes — never bake `/home/<user>/...` into the link.
 
 ## Usage
 
@@ -188,7 +189,7 @@ MIT — see [LICENSE](LICENSE).
 Rules:
 
 - Title is `# <name>` — the bare skill name, never "`<name> Agent Skill`".
-- `## Installation` is mandatory in every README and MUST use the exact commands above (only `<name>` differs).
+- `## Installation` is mandatory in every README and MUST use the exact commands above (the same for every skill — skills ship in the collection's `skills/` folder).
 - `## License` is the last section in every README.
 
 ## 7. .gitignore template
@@ -233,3 +234,4 @@ Before a skill is added or merged, verify all of the following:
 - [ ] `.gitignore` matches §7 template
 - [ ] `evals/evals.json` present and matches §5 schema; negative control included
 - [ ] `references/` files (if any) are referenced from `SKILL.md` or `README.md`
+- [ ] Install check: the collection link exposes the skill — `test -f ~/.omp/agent/skills/<name>/SKILL.md` succeeds (or `<project>/.omp/skills/<name>/SKILL.md` for per-project)
