@@ -1,0 +1,15 @@
+# 环境与密钥
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+id_rsa*
+
+# 系统/编辑器
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
