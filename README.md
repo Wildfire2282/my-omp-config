@@ -1,6 +1,6 @@
 # my-omp-config
 
-> [English](#english)
+[English](#english)
 
 Oh My Pi (omp) 个人配置仓库，集中管理 Skills、Extensions、Rules，通过软链实现编辑即生效。
 
