@@ -1,0 +1,37 @@
+{
+  "skill_name": "create-skill",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a new skill called pdf-extract that extracts text and tables from PDFs using pdfplumber. I have a sample PDF at docs/sample.pdf.",
+      "expected_output": "A new directory ~/workspace/my-omp-config/skills/pdf-extract/ with SKILL.md, LICENSE, README.md, .gitignore and evals/evals.json, self-check all PASS, not auto-installed.",
+      "assertions": [
+        "Directory ~/workspace/my-omp-config/skills/pdf-extract/ exists with SKILL.md",
+        "SKILL.md frontmatter name is pdf-extract and matches directory name",
+        "LICENSE file exists with MIT text and copyright matches metadata.author",
+        "README.md follows §6 template and ends with License section",
+        "evals/evals.json exists with skill_name pdf-extract and includes a negative control"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Scaffold a skill named csv-analyzer for CSV analysis — summary stats, derived columns, charts. Use the real dataset at data/sales.csv as source material.",
+      "expected_output": "Skill directory csv-analyzer with instructions grounded in the provided dataset, self-check PASS, gate asks whether to install.",
+      "assertions": [
+        "SKILL.md body is in English and under 500 lines",
+        "SKILL.md references progressive disclosure and writing-guidelines principles",
+        "Self-check reports all §8 items PASS with evidence",
+        "Gate section asks for explicit user instruction before installing"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "What's the weather today?",
+      "expected_output": "No skill directory is created; answer does not scaffold a skill or mention SKILL.md frontmatter.",
+      "assertions": [
+        "No new directory is created under ~/workspace/my-omp-config/skills/",
+        "The answer does not introduce skill-specific scaffolding or frontmatter"
+      ]
+    }
+  ]
+}

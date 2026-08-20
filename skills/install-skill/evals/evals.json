@@ -1,0 +1,33 @@
+{
+  "skill_name": "install-skill",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Install the skill at ~/workspace/my-omp-config/skills/pdf-extract so it's available in omp.",
+      "expected_output": "Collection symlink verified or created at ~/.omp/agent/skills, test -f succeeds, user told to restart omp.",
+      "assertions": [
+        "readlink ~/.omp/agent/skills resolves to ~/workspace/my-omp-config/skills (relative)",
+        "test -f ~/.omp/agent/skills/pdf-extract/SKILL.md succeeds",
+        "Output reports the resolved link target and verified path"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Install the skill at ~/workspace/my-omp-config/skills/csv-analyzer for the current project at ~/workspace/my-project (per-project).",
+      "expected_output": "Per-project link at <project>/.omp/skills verified, skill discoverable, no user-wide link change unless needed.",
+      "assertions": [
+        "Link at <project>/.omp/skills points to the skills collection",
+        "test -f <project>/.omp/skills/csv-analyzer/SKILL.md succeeds"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "What's the weather today?",
+      "expected_output": "No symlink is created or modified; answer does not mention skills collection or omp links.",
+      "assertions": [
+        "No link at ~/.omp/agent/skills is modified",
+        "The answer does not mention ln -s or skill installation"
+      ]
+    }
+  ]
+}

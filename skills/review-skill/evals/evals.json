@@ -1,0 +1,36 @@
+{
+  "skill_name": "review-skill",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Review the existing skill at ~/workspace/my-omp-config/skills/old-tool — it was hand-written and may not follow the standard. Normalize it.",
+      "expected_output": "A report with §8 checklist PASS/FAIL per item with file:line evidence, severity classification, and a unified diff for fixes; no files modified without confirmation.",
+      "assertions": [
+        "Report covers all 12 items of the §8 checklist with PASS/FAIL and evidence",
+        "Report classifies failures as MUST FIX / SHOULD FIX / NIT",
+        "A unified diff is provided for proposed fixes",
+        "No files under old-tool/ are modified before user confirmation"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Audit the skill at ~/workspace/my-omp-config/skills/crawl4ai — check its description triggering and evals quality, optimize the description.",
+      "expected_output": "Description optimization proposal with train/validation results and evals review with schema and assertion feedback, gated behind confirmation.",
+      "assertions": [
+        "Description optimization follows description-optimization.md with ~20 queries and train/validation split",
+        "Proposed description stays ≤1024 chars and uses imperative phrasing",
+        "Evals review checks schema, negative control and verifiable assertions",
+        "Gate asks for explicit confirmation before applying any patch"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "What's the weather today?",
+      "expected_output": "No review is performed; answer does not audit any skill or mention §8 checklist.",
+      "assertions": [
+        "No skill directory is modified",
+        "The answer does not mention skill standard or checklist items"
+      ]
+    }
+  ]
+}
