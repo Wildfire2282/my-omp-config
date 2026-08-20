@@ -42,14 +42,7 @@ ln -s ~/workspace/my-omp-config/rules      ~/.omp/agent/rules
 
 仓库固定在 ~/workspace/my-omp-config，使用相对路径软链。
 
-## 使用约定
-
-- 编辑 `skills/<name>/` 或 `rules/` 后实时生效，新增需重启 omp
-- 新建技能遵循 `create-skill` 规范，审计存量使用 `review-skill`
-- 安装校验：`/skill:install-skill`
-
 ## 工具
-
 `scripts/install-omp-usage.py` 将 omp 状态栏的费用显示替换为 opencode-go 套餐用量的紧凑格式 `5h%-7d%-mo%`，并通过 `~/.local/bin/omp` wrapper 实现升级后自动重打补丁。详见 `scripts/README.md`。
 
 ## 许可证
@@ -96,12 +89,6 @@ ln -s ~/workspace/my-omp-config/rules      ~/.omp/agent/rules
 ```
 
 The repository is fixed at ~/workspace/my-omp-config, using relative symlinks.
-
-### Conventions
-
-- Edits to `skills/<name>/` or `rules/` take effect instantly; new entries require an omp restart
-- Create skills following `create-skill` standard, audit with `review-skill`
-- Verify install: `/skill:install-skill`
 
 ### Utilities
 
