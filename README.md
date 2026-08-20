@@ -24,7 +24,7 @@ my-omp-config/
 │   ├── review-skill/  # 存量技能审计与规范化
 │   ├── userscript/    # 油猴脚本开发
 │   └── omp-guide/     # omp 使用指引
-├── project-skills/    # 项目级 Skills
+├── project-skills/    # 项目级 Skills（不软链，手动复制到项目使用）
 │   └── svgjs/         # SVG.js 矢量图形编程
 ├── extensions/   # omp 扩展
 │   └── bash-bang-complete.ts  # Shell 补全增强
@@ -80,7 +80,7 @@ my-omp-config/
 │   ├── review-skill/  # Audit existing skills
 │   ├── userscript/    # Userscript development
 │   └── omp-guide/     # omp usage guide
-├── project-skills/    # Project-level Skills
+├── project-skills/    # Project-level Skills (not symlinked, copy manually to project)
 │   └── svgjs/         # SVG.js vector graphics
 ├── extensions/   # omp extensions
 │   └── bash-bang-complete.ts  # Shell completion enhancement
