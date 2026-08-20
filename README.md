@@ -17,20 +17,20 @@ Oh My Pi (omp) 个人配置仓库，集中管理 Skills、Extensions、Rules，�
 
 ```
 my-omp-config/
-├── skills/       # Agent Skills
+├── skills/       # Agent Skills 技能集
 │   ├── crawl4ai/      # 网页抓取与结构化抽取
-│   ├── create-skill/  # 创建新技能
-│   ├── install-skill/ # 软链安装与校验
-│   ├── review-skill/  # 存量技能审计
-│   ├── svgjs/         # SVG.js 编程
+│   ├── create-skill/  # 创建新技能（含模板与校验）
+│   ├── install-skill/ # 软链安装与可用性校验
+│   ├── review-skill/  # 存量技能审计与规范化
+│   ├── svgjs/         # SVG.js 矢量图形编程
 │   ├── userscript/    # 油猴脚本开发
 │   └── omp-guide/     # omp 使用指引
 ├── extensions/   # omp 扩展
-│   └── bash-bang-complete.ts
+│   └── bash-bang-complete.ts  # Shell 补全增强
 ├── rules/        # 全局规则
-│   └── language.md
+│   └── language.md  # 语言与术语规则
 └── scripts/      # 工具脚本
-    └── install-omp-usage.py  # 状态栏用量显示补丁
+    └── install-omp-usage.py  # 状态栏用量显示补丁 (Opencode Go)
 ```
 
 ## 快速开始
@@ -74,18 +74,18 @@ This repository is the single source of truth for `~/.omp/agent/`. All directori
 my-omp-config/
 ├── skills/       # Agent Skills
 │   ├── crawl4ai/      # Web crawling & structured extraction
-│   ├── create-skill/  # Create new skills
+│   ├── create-skill/  # Create new skill (template & validation)
 │   ├── install-skill/ # Symlink install & verification
 │   ├── review-skill/  # Audit existing skills
-│   ├── svgjs/         # SVG.js programming
+│   ├── svgjs/         # SVG.js vector graphics
 │   ├── userscript/    # Userscript development
 │   └── omp-guide/     # omp usage guide
 ├── extensions/   # omp extensions
-│   └── bash-bang-complete.ts
+│   └── bash-bang-complete.ts  # Shell completion enhancement
 ├── rules/        # Global rules
-│   └── language.md
+│   └── language.md  # Language & terminology rules
 └── scripts/      # Utilities
-    └── install-omp-usage.py  # Status line usage patch
+    └── install-omp-usage.py  # Status line usage patch (Opencode Go)
 ```
 
 ### Quick Start
