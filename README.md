@@ -72,17 +72,17 @@ Personal configuration repository for [Oh My Pi](https://github.com/nicepkg/oh-m
 
 ### Overview
 
-This repository is the single source of truth for `~/.omp/agent/`. All directories are symlinked, no copying needed.
+This repository is the single source of truth for `~/.omp/agent/`. All directories are symlinked, no copying needed, and edits take effect instantly.
 
 ### Structure
 ```
 my-omp-config/
 ├── LICENSE
-├── skills/            # Agent Skills (symlinked to ~/.omp/agent/skills)
+├── skills/            # Global Skills (symlinked to ~/.omp/agent/skills)
 │   ├── crawl4ai/      # Web crawling & structured extraction
 │   ├── create-skill/  # Create new skill (template & validation)
 │   ├── install-skill/ # Symlink install & verification
-│   ├── review-skill/  # Audit existing skills
+│   ├── review-skill/  # Audit existing skills and normalization
 │   ├── userscript/    # Userscript development
 │   └── omp-guide/     # omp usage guide
 ├── project-skills/    # Project-level Skills (not symlinked, copy manually to project)
@@ -103,7 +103,7 @@ ln -s ~/workspace/my-omp-config/extensions ~/.omp/agent/extensions
 ln -s ~/workspace/my-omp-config/rules      ~/.omp/agent/rules
 ```
 
-Keep the repository at `~/workspace/my-omp-config`. Symlinks use relative paths and remain valid across usernames.
+The repository is fixed at ~/workspace/my-omp-config, using relative symlinks.
 
 ### Conventions
 
