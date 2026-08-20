@@ -2,7 +2,7 @@
 
 [English](#english)
 
-Oh My Pi (omp) 个人配置仓库，集中管理 Skills、Extensions、Rules，通过软链实现编辑即生效。
+Oh My Pi (omp) 个人配置仓库，集中管理 Skills、Extensions、Rules，通过软链实现编辑即生效。仅在 WSL 环境测试。
 
 ---
 
@@ -56,7 +56,7 @@ ln -s ~/workspace/my-omp-config/rules      ~/.omp/agent/rules
 
 ## English
 
-Personal configuration repository for [Oh My Pi](https://github.com/nicepkg/oh-my-pi), centrally managing Skills, Extensions and Rules. Installed via symlinks — edits take effect instantly.
+Personal configuration repository for [Oh My Pi](https://github.com/nicepkg/oh-my-pi), centrally managing Skills, Extensions and Rules. Installed via symlinks — edits take effect instantly. Tested on WSL only.
 
 ### Overview
 
