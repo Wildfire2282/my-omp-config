@@ -41,9 +41,7 @@ my-omp-config/
 ln -s ~/workspace/my-omp-config/skills     ~/.omp/agent/skills
 ln -s ~/workspace/my-omp-config/extensions ~/.omp/agent/extensions
 ln -s ~/workspace/my-omp-config/rules      ~/.omp/agent/rules
-```
-
-仓库需固定在 `~/workspace/my-omp-config`，使用相对路径软链，跨用户名不失效。
+仓库固定在 ~/workspace/my-omp-config，使用相对路径软链。
 
 ## 使用约定
 
