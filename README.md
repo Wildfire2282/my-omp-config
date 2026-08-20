@@ -17,14 +17,15 @@ Oh My Pi (omp) 个人配置仓库，集中管理 Skills、Extensions、Rules，�
 
 ```
 my-omp-config/
-├── skills/       # Agent Skills 技能集
+├── skills/            # Agent Skills 技能集（软链至 ~/.omp/agent/skills）
 │   ├── crawl4ai/      # 网页抓取与结构化抽取
 │   ├── create-skill/  # 创建新技能（含模板与校验）
 │   ├── install-skill/ # 软链安装与可用性校验
 │   ├── review-skill/  # 存量技能审计与规范化
-│   ├── svgjs/         # SVG.js 矢量图形编程
 │   ├── userscript/    # 油猴脚本开发
 │   └── omp-guide/     # omp 使用指引
+├── project-skills/    # 项目级 Skills（不软链，仅本项目使用）
+│   └── svgjs/         # SVG.js 矢量图形编程
 ├── extensions/   # omp 扩展
 │   └── bash-bang-complete.ts  # Shell 补全增强
 ├── rules/        # 全局规则
@@ -72,14 +73,15 @@ This repository is the single source of truth for `~/.omp/agent/`. All directori
 
 ```
 my-omp-config/
-├── skills/       # Agent Skills
+├── skills/            # Agent Skills (symlinked to ~/.omp/agent/skills)
 │   ├── crawl4ai/      # Web crawling & structured extraction
 │   ├── create-skill/  # Create new skill (template & validation)
 │   ├── install-skill/ # Symlink install & verification
 │   ├── review-skill/  # Audit existing skills
-│   ├── svgjs/         # SVG.js vector graphics
 │   ├── userscript/    # Userscript development
 │   └── omp-guide/     # omp usage guide
+├── project-skills/    # Project-level Skills (not symlinked, project-only)
+│   └── svgjs/         # SVG.js vector graphics
 ├── extensions/   # omp extensions
 │   └── bash-bang-complete.ts  # Shell completion enhancement
 ├── rules/        # Global rules
