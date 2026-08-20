@@ -5,7 +5,7 @@
 Oh My Pi (omp) 个人配置仓库，集中管理 Skills、Extensions、Rules，通过软链实现编辑即生效。
 
 > [!WARNING]
-> 仅在 WSL 环境测试
+> 仅在 WSL 环境测试过
 
 ---
 
