@@ -17,6 +17,7 @@ Oh My Pi (omp) 个人配置仓库，集中管理 Skills、Extensions、Rules，�
 
 ```
 my-omp-config/
+├── LICENSE
 ├── skills/            # 全局技能集（软链至 ~/.omp/agent/skills）
 │   ├── crawl4ai/      # 网页抓取与结构化抽取
 │   ├── create-skill/  # 创建新技能（含模板与校验）
@@ -70,9 +71,9 @@ Personal configuration repository for [Oh My Pi](https://github.com/nicepkg/oh-m
 This repository is the single source of truth for `~/.omp/agent/`. All directories are symlinked, no copying needed.
 
 ### Structure
-
 ```
 my-omp-config/
+├── LICENSE
 ├── skills/            # Agent Skills (symlinked to ~/.omp/agent/skills)
 │   ├── crawl4ai/      # Web crawling & structured extraction
 │   ├── create-skill/  # Create new skill (template & validation)
