@@ -1,0 +1,41 @@
+{
+  "skill_name": "omp-guide",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Help me create a new skill in my-omp-config, what do I need to configure?",
+      "expected_output": "Agent loads omp://skills.md via read(\"omp://\")",
+      "assertions": [
+        "Output mentions omp://skills.md or read(\"omp://\")",
+        "Output mentions ~/workspace/my-omp-config/skills/<name>/"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I want to add a global rule in omp that applies to all sessions, how should I do it?",
+      "expected_output": "Agent loads omp://rulebook-matching-pipeline.md via omp://",
+      "assertions": [
+        "Output mentions omp://rulebook-matching-pipeline.md or omp://context-files.md",
+        "Output mentions rule:// or ~/.omp/agent/rules/"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "How does omp load extensions? I want to write an extension that intercepts bash",
+      "expected_output": "Agent loads omp://extensions.md via omp://",
+      "assertions": [
+        "Output mentions omp://extensions.md",
+        "Output mentions ~/.omp/agent/extensions"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Help me write a Python script to scrape the title from example.com",
+      "expected_output": "Agent does NOT invoke omp-guide; handles as normal coding task without omp://",
+      "assertions": [
+        "Output does not mention omp://",
+        "Output does not mention omp-guide"
+      ]
+    }
+  ]
+}
