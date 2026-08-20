@@ -55,6 +55,10 @@ ln -s ~/workspace/my-omp-config/rules      ~/.omp/agent/rules
 
 `scripts/install-omp-usage.py` 将 omp 状态栏的费用显示替换为 opencode-go 套餐用量的紧凑格式 `5h%-7d%-mo%`，并通过 `~/.local/bin/omp` wrapper 实现升级后自动重打补丁。详见 `scripts/README.md`。
 
+## 许可证
+
+MIT License — 详见 [LICENSE](LICENSE)
+
 ---
 
 <a id="english"></a>
@@ -110,3 +114,7 @@ Keep the repository at `~/workspace/my-omp-config`. Symlinks use relative paths 
 ### Utilities
 
 `scripts/install-omp-usage.py` replaces the cost display in the omp status line with a compact opencode-go usage format `5h%-7d%-mo%` and auto-repatches after upgrades via a `~/.local/bin/omp` wrapper. See `scripts/README.md` for details.
+
+### License
+
+MIT License — see [LICENSE](LICENSE)
