@@ -17,7 +17,7 @@ Oh My Pi (omp) 个人配置仓库，集中管理 Skills、Extensions、Rules，�
 
 ```
 my-omp-config/
-├── skills/            # Agent Skills 技能集（软链至 ~/.omp/agent/skills）
+├── skills/            # 全局技能集（软链至 ~/.omp/agent/skills）
 │   ├── crawl4ai/      # 网页抓取与结构化抽取
 │   ├── create-skill/  # 创建新技能（含模板与校验）
 │   ├── install-skill/ # 软链安装与可用性校验
