@@ -56,8 +56,6 @@ ln -s ~/workspace/my-omp-config/rules      ~/.omp/agent/rules
 
 ## English
 
-> 🌐 中文用户请向上阅读，英文文档如下。
-
 Personal configuration repository for [Oh My Pi](https://github.com/nicepkg/oh-my-pi), centrally managing Skills, Extensions and Rules. Installed via symlinks — edits take effect instantly.
 
 ### Overview
