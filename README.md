@@ -1,24 +1,36 @@
 # my-omp-config
 
-Oh My Pi (omp) 配置仓库 — 技能、扩展、规则的单一事实来源。所有目录通过**软链**安装到 `~/.omp/agent/`，编辑即生效。
+> 🌐 English users — [Click here to jump to English version](#english)
 
-## 结构
+Oh My Pi (omp) 个人配置仓库，集中管理 Skills、Extensions、Rules，通过软链实现编辑即生效。
+
+---
+
+## 简介
+
+本仓库是 `~/.omp/agent/` 的单一事实来源。所有目录以软链形式安装，无需拷贝，改动实时生效。
+
+## 目录结构
 
 ```
 my-omp-config/
-├── skills/       # Agent Skills（SKILL.md 格式，6 个）
-│   ├── crawl4ai/      # Crawl4AI 抓取与结构化抽取
-│   ├── create-skill/  # 新建技能（含自检闭环）
-│   ├── review-skill/  # 存量技能审计与规范化
-│   ├── install-skill/ # 链接与可用性验证
-│   ├── svgjs/         # SVG.js v3 编程
-│   └── userscript/    # 油猴脚本
-├── extensions/   # omp 扩展（bash-bang-complete.ts）
-├── rules/        # agent 规则（当前为空）
-└── scripts/      # 工具脚本（install-omp-usage.py）
+├── skills/       # Agent Skills
+│   ├── crawl4ai/      # 网页抓取与结构化抽取
+│   ├── create-skill/  # 创建新技能
+│   ├── install-skill/ # 软链安装与校验
+│   ├── review-skill/  # 存量技能审计
+│   ├── svgjs/         # SVG.js 编程
+│   ├── userscript/    # 油猴脚本开发
+│   └── omp-guide/     # omp 使用指引
+├── extensions/   # omp 扩展
+│   └── bash-bang-complete.ts
+├── rules/        # 全局规则
+│   └── language.md
+└── scripts/      # 工具脚本
+    └── install-omp-usage.py  # 状态栏用量显示补丁
 ```
 
-## 安装（软链，非拷贝）
+## 快速开始
 
 ```bash
 ln -s ~/workspace/my-omp-config/skills     ~/.omp/agent/skills
@@ -26,18 +38,68 @@ ln -s ~/workspace/my-omp-config/extensions ~/.omp/agent/extensions
 ln -s ~/workspace/my-omp-config/rules      ~/.omp/agent/rules
 ```
 
-相对目标 `../../workspace/my-omp-config/...`，用户名变化不失效；仓库需保持在 `~/workspace/my-omp-config`。
+仓库需固定在 `~/workspace/my-omp-config`，使用相对路径软链，跨用户名不失效。
 
-## 约定
+## 使用约定
 
-- **改即生效**：编辑 `skills/<name>/` 实时生效；新增需重启 omp 或 reload skills
-- **新建技能**：`~/workspace/my-omp-config/skills/<name>/`，遵循 `create-skill/references/standard.md` §8 清单
-- **审查存量**：`/skill:review-skill` 指向已存在目录，只出报告与 diff，确认后写回
-- **安装**：`/skill:install-skill` 确保集合软链并 `test -f ~/.omp/agent/skills/<name>/SKILL.md`
-- **发现**：`omp` 扫描 `<skills-root>/<name>/SKILL.md`
-- **触发**：`disable-model-invocation: true`，手动 `/skill:<name>`，路径一律用 `~`
+- 编辑 `skills/<name>/` 或 `rules/` 后实时生效，新增需重启 omp
+- 新建技能遵循 `create-skill` 规范，审计存量使用 `review-skill`
+- 安装校验：`/skill:install-skill`
 
-## 注意
+## 工具
 
-- `~/.omp/agent/managed-skills` 为 `manage_skill` 工具管理区，与 `~/.omp/agent/skills` 无关
-- 重装 omp 后运行 `python3 scripts/install-omp-usage.py` 恢复用量显示补丁
+`scripts/install-omp-usage.py` 将 omp 状态栏的费用显示替换为 opencode-go 套餐用量的紧凑格式 `5h%-7d%-mo%`，并通过 `~/.local/bin/omp` wrapper 实现升级后自动重打补丁。详见 `scripts/README.md`。
+
+---
+
+<a id="english"></a>
+
+## English
+
+> 🌐 中文用户请向上阅读，英文文档如下。
+
+Personal configuration repository for [Oh My Pi](https://github.com/nicepkg/oh-my-pi), centrally managing Skills, Extensions and Rules. Installed via symlinks — edits take effect instantly.
+
+### Overview
+
+This repository is the single source of truth for `~/.omp/agent/`. All directories are symlinked, no copying needed.
+
+### Structure
+
+```
+my-omp-config/
+├── skills/       # Agent Skills
+│   ├── crawl4ai/      # Web crawling & structured extraction
+│   ├── create-skill/  # Create new skills
+│   ├── install-skill/ # Symlink install & verification
+│   ├── review-skill/  # Audit existing skills
+│   ├── svgjs/         # SVG.js programming
+│   ├── userscript/    # Userscript development
+│   └── omp-guide/     # omp usage guide
+├── extensions/   # omp extensions
+│   └── bash-bang-complete.ts
+├── rules/        # Global rules
+│   └── language.md
+└── scripts/      # Utilities
+    └── install-omp-usage.py  # Status line usage patch
+```
+
+### Quick Start
+
+```bash
+ln -s ~/workspace/my-omp-config/skills     ~/.omp/agent/skills
+ln -s ~/workspace/my-omp-config/extensions ~/.omp/agent/extensions
+ln -s ~/workspace/my-omp-config/rules      ~/.omp/agent/rules
+```
+
+Keep the repository at `~/workspace/my-omp-config`. Symlinks use relative paths and remain valid across usernames.
+
+### Conventions
+
+- Edits to `skills/<name>/` or `rules/` take effect instantly; new entries require an omp restart
+- Create skills following `create-skill` standard, audit with `review-skill`
+- Verify install: `/skill:install-skill`
+
+### Utilities
+
+`scripts/install-omp-usage.py` replaces the cost display in the omp status line with a compact opencode-go usage format `5h%-7d%-mo%` and auto-repatches after upgrades via a `~/.local/bin/omp` wrapper. See `scripts/README.md` for details.
