@@ -27,7 +27,7 @@ my-omp-config/
 ├── extensions/   # omp 扩展
 │   └── bash-bang-complete.ts  # Shell 补全增强
 ├── rules/        # 全局规则
-│   └── language.md  # 语言与术语规则
+│   └── install.md   # 现代化程序安装规则
 └── scripts/      # 工具脚本
     └── install-omp-usage.py  # 状态栏用量显示补丁 (Opencode Go)
 ```
@@ -75,7 +75,7 @@ my-omp-config/
 ├── extensions/   # omp extensions
 │   └── bash-bang-complete.ts  # Shell completion enhancement
 ├── rules/        # Global rules
-│   └── language.md  # Language & terminology rules
+│   └── install.md   # Modern tool installation
 └── scripts/      # Utilities
     └── install-omp-usage.py  # Status line usage patch (Opencode Go)
 ```
